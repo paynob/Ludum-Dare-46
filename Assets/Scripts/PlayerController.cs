@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : LivingBeing
 {
     [SerializeField]
-    Transform crosshair = null;
+    Transform crosshair = null, hand = null;
     [SerializeField]
     LayerMask minableLayers;
     [SerializeField]
@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if( isDead )
+            return;
+
         Vector2 mousePositionInRealWorld = cam.ScreenToWorldPoint( Input.mousePosition );
 
         Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized;
@@ -44,14 +47,11 @@ public class PlayerController : MonoBehaviour
         if( Input.GetMouseButtonDown(0) )
         {
             Collider2D coll = Physics2D.OverlapPoint( crosshair.position, minableLayers );
-            Debug.Log( "Clicked" );
             if ( coll != null )
             {
-                Debug.Log( $"Hit {coll.name}" );
                 Tile tile = coll.GetComponent<Tile>();
                 if ( tile != null )
                 {
-                    Debug.Log( $"Tile {tile.name}" );
                     tile.Hit( force );
                 }
 
@@ -65,8 +65,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    private new void LateUpdate()
     {
+        base.LateUpdate();
+
+        if( isDead )
+            return;
+
         switch( groundStatus )
         {
             case GroundStatus.Grounding:
@@ -89,6 +94,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if( isDead )
+            return;
+
         body.velocity = new Vector2(Input.GetAxis( "Horizontal" ) * movementSpeed, body.velocity.y);
 
         if( groundStatus == GroundStatus.StartingJump )
@@ -96,5 +104,20 @@ public class PlayerController : MonoBehaviour
             body.AddForce( new Vector2(Input.GetAxis("Horizontal"), jumpForce), ForceMode2D.Impulse );
             groundStatus = GroundStatus.Jumping;
         }
+    }
+
+    public void Pick( Rigidbody2D pickable )
+    {
+        if( hand.childCount > 0 )
+            hand.DetachChildren();
+        pickable.transform.SetParent( hand );
+        pickable.transform.localPosition = Vector2.zero;
+        pickable.isKinematic = true;
+    }
+
+    public void Release( Rigidbody2D pickable)
+    {
+        pickable.transform.SetParent( null );
+        pickable.isKinematic = false;
     }
 }
