@@ -22,6 +22,8 @@ public class PlayerController : LivingBeing
 
     private enum GroundStatus { Grounding, StartingJump, Jumping, Falling }
     private GroundStatus groundStatus;
+    private Animator animator;
+    public Transform modelGameObject;
 
     private void Awake()
     {
@@ -29,6 +31,8 @@ public class PlayerController : LivingBeing
         body = GetComponent<Rigidbody2D>();
 
         crosshairOffset = Vector2.Distance( transform.position, crosshair.position );
+        animator = GetComponent<Animator>();
+        modelGameObject = transform.Find("Model");
     }
 
     // Update is called once per frame
@@ -84,8 +88,10 @@ public class PlayerController : LivingBeing
                     groundStatus = GroundStatus.Falling;
                 break;
             case GroundStatus.Falling:
-                if( body.velocity.y == 0 )
+                if( body.velocity.y == 0 ) {
                     groundStatus = GroundStatus.Grounding;
+                    animator.SetBool("jumping", false);
+                }
                 break;
             default:
                 break;
@@ -98,11 +104,18 @@ public class PlayerController : LivingBeing
             return;
 
         body.velocity = new Vector2(Input.GetAxis( "Horizontal" ) * movementSpeed, body.velocity.y);
+        animator.SetFloat("speedX", Mathf.Abs(body.velocity.x));
+
+        if (modelGameObject != null && body.velocity.x != 0f) {
+            modelGameObject.localScale = new Vector3((body.velocity.x > 0f) ? 1f : -1f, 1f, 1f);
+        }
+
 
         if( groundStatus == GroundStatus.StartingJump )
         {
             body.AddForce( new Vector2(Input.GetAxis("Horizontal"), jumpForce), ForceMode2D.Impulse );
             groundStatus = GroundStatus.Jumping;
+            animator.SetBool("jumping", true);
         }
     }
 
