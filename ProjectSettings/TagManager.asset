@@ -47,6 +47,9 @@ TagManager:
   - name: Player
     uniqueID: 2547570877
     locked: 0
+  - name: Particles
+    uniqueID: 2927432111
+    locked: 0
   - name: Canary
     uniqueID: 3827213851
     locked: 0

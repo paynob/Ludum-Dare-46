@@ -12,8 +12,11 @@ public class Tile : MonoBehaviour
     [SerializeField]
     private Sprite[] sprites = null;
 
+    public GameObject miningParticleSystem;
+
     private SpriteRenderer spriteRenderer;
     private int currentHealth;
+    
 
     private void Awake()
     {
@@ -24,6 +27,10 @@ public class Tile : MonoBehaviour
 
     private void UpdateSprite()
     {
+        if (miningParticleSystem != null) {
+            Instantiate(miningParticleSystem, transform.position, Quaternion.identity);
+        }
+
         int spriteIndex = (int)((maxHealth-currentHealth) / (float)maxHealth * sprites.Length);
         spriteRenderer.sprite = sprites[spriteIndex];
     }
