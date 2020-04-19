@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 56e5a15d9306a2f4cbd87ef29e7b79d7
+guid: 44437bba01c283441851b0d964b151a6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2295692291942042531
+    second: CanaryWing
+  - first:
+      213: -3323029433693627671
+    second: CanaryHead
+  - first:
+      213: -571829086303497050
+    second: CanaryBody
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 2048
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,7 +118,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CanaryWing
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 349
+        width: 189
+        height: 141
+      alignment: 9
+      pivot: {x: 0.8557088, y: 0.81208813}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abcec6f9ffebdf10800000000000000
+      internalID: 2295692291942042531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CanaryHead
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 344
+        width: 172
+        height: 128
+      alignment: 9
+      pivot: {x: 0.3934003, y: 0.4713514}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ea1682165a32e1d0800000000000000
+      internalID: -3323029433693627671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CanaryBody
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1
+        width: 333
+        height: 281
+      alignment: 9
+      pivot: {x: 0.48898792, y: 0.45650023}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4d4a6c9747018f0800000000000000
+      internalID: -571829086303497050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
