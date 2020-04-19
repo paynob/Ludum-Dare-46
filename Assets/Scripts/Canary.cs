@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Canary : LivingBeing
 {
+    [SerializeField]
+    private AudioSource audioSource;
+
     Animator animator;
     Rigidbody2D body;
 
@@ -24,20 +27,22 @@ public class Canary : LivingBeing
 
     private void Update()
     {
-        if ( !isDead && oxigen <= 1f)
+        if( !isDead && oxigen <= 1f )
         {
             float totalDanger = 0f;
 
-            foreach  ( var c in enemiesDangerRatio )
+            foreach( var c in enemiesDangerRatio )
             {
-                    totalDanger += c.Value;
+                totalDanger += c.Value;
             }
+
+            audioSource.volume = Mathf.Pow( totalDanger, 2 ) * 2f;
 
             //TODO animator.SetFloat( "DangerRatio", totalDanger );
 
-            if ( Input.GetMouseButtonDown(1))
+            if( Input.GetMouseButtonDown( 1 ) )
             {
-                if ( transform.parent == null && touchingPlayer )
+                if( transform.parent == null && touchingPlayer )
                 {
                     player.Pick( body );
                 } else
@@ -45,14 +50,14 @@ public class Canary : LivingBeing
                     player.Release( body );
                 }
             }
-        }
+        } else if( isDead )
+            audioSource.volume = 0;
     }
 
     private void OnTriggerEnter2D( Collider2D collision )
     {
         if( collision.CompareTag( "Player" ) )
         {
-            Debug.Log( collision );
             touchingPlayer = true;
         }
     }

@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour
     float secondsToGetDiamonds = 60f;
 
     [SerializeField]
-    Slider timeSlider;
+    Slider timeSlider, playerOxigen, canaryOxigen;
 
     [SerializeField]
     TextMeshProUGUI timeText, diamondsText;
+
 
     private float remainingTime;
     private int currentDiamonds;
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
         h = Mathf.Lerp( 0, 1 / 3f, remainingTime / secondsToGetDiamonds );
         timeSliderFillArea.color = Color.HSVToRGB( h, s, v );
         timeText.text = $"{Mathf.RoundToInt( remainingTime ) / 60}:{Mathf.RoundToInt(remainingTime)%60}";
+
+        playerOxigen.value = player.oxigen;
+        canaryOxigen.value = canary.oxigen;
+
     }
 
     public void CollectDiamond()

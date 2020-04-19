@@ -17,6 +17,8 @@ public class PlayerController : LivingBeing
     float movementSpeed;
     [SerializeField]
     float jumpForce;
+    [SerializeField]
+    AudioSource audioSource;
 
     Camera cam = null;
     Rigidbody2D body;
@@ -47,7 +49,7 @@ public class PlayerController : LivingBeing
             crosshairOffset = Vector2.Distance( transform.position, crosshairTransform.position );
         }
 
-        animator = GetComponent<Animator>();        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -60,7 +62,7 @@ public class PlayerController : LivingBeing
 
         Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized;
 
-        crosshairTransform.position = transform.position + (Vector3)directionFromCharacterToMouse;
+        crosshairTransform.position = transform.position + (Vector3)(directionFromCharacterToMouse * crosshairOffset);
         ///////////////////////////////////////
         Collider2D coll = Physics2D.OverlapPoint( crosshairTransform.position, minableLayers );
         if (crosshairRenderer != null) {
@@ -69,18 +71,24 @@ public class PlayerController : LivingBeing
 
         if( coll != null && Input.GetMouseButtonDown(0) )
         {
-            if ( coll != null )
+            Tile tile = coll.GetComponent<Tile>();
+
+            if ( tile != null )
             {
-                Tile tile = coll.GetComponent<Tile>();
-                if ( tile != null )
-                {
-                    tile.Hit( force );
-                }
-                if (!mining) {
-                    mining = true;
-                    animator.SetBool("mining", true);
-                    mineStartTime = Time.fixedTime;
-                }
+                tile.Hit( force );
+            }
+
+            if  ( directionFromCharacterToMouse.x > 0.5f )
+                modelGameObject.localScale = new Vector3( 1f, 1f, 1f );
+            else if( directionFromCharacterToMouse.x < -0.5f )
+                modelGameObject.localScale = new Vector3( -1f, 1f, 1f );
+            // else by body.velocity.x instead of crosshair
+
+            if (!mining) {
+                audioSource.Play();
+                mining = true;
+                animator.SetBool("mining", true);
+                mineStartTime = Time.fixedTime;
             }
         } else if (mining && (Time.fixedTime - mineStartTime > MINE_ANIM_DURATION)) {
             mining = false;
