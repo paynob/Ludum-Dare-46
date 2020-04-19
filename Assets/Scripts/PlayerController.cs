@@ -47,10 +47,7 @@ public class PlayerController : LivingBeing
             crosshairOffset = Vector2.Distance( transform.position, crosshairTransform.position );
         }
 
-        animator = GetComponent<Animator>();
-        modelGameObject = transform.Find("Model");
-
-        
+        animator = GetComponent<Animator>();        
     }
 
     // Update is called once per frame
@@ -61,7 +58,7 @@ public class PlayerController : LivingBeing
 
         Vector2 mousePositionInRealWorld = cam.ScreenToWorldPoint( Input.mousePosition );
 
-        Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized* crosshairOffset;
+        Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized;
 
         crosshairTransform.position = transform.position + (Vector3)directionFromCharacterToMouse;
         ///////////////////////////////////////
