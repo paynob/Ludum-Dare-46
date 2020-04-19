@@ -20,7 +20,7 @@ TagManager:
   - CanaryCollision
   - Player
   - Breakable
-  - 
+  - Pickup
   - 
   - 
   - 
@@ -44,12 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 2547570877
+  - name: Pickable
+    uniqueID: 1055271021
+    locked: 0
+  - name: Tile
+    uniqueID: 3533316861
     locked: 0
   - name: Particles
     uniqueID: 2927432111
     locked: 0
   - name: Canary
     uniqueID: 3827213851
+    locked: 0
+  - name: Player
+    uniqueID: 2547570877
     locked: 0
