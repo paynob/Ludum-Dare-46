@@ -61,7 +61,7 @@ public class PlayerController : LivingBeing
 
         Vector2 mousePositionInRealWorld = cam.ScreenToWorldPoint( Input.mousePosition );
 
-        Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized;
+        Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized* crosshairOffset;
 
         crosshairTransform.position = transform.position + (Vector3)directionFromCharacterToMouse;
         ///////////////////////////////////////

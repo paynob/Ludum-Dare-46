@@ -35,10 +35,13 @@ public class Tile : MonoBehaviour
     public void Hit( int force )
     {
         if( toughness < force )
+        {
             currentHealth -= force - toughness;
-        if( currentHealth > 0 )
-            UpdateSprite();
-        else
-            Destroy( gameObject );
+
+            if( currentHealth > 0 )
+                UpdateSprite();
+            else
+                Destroy( gameObject );
+        }
     }
 }
