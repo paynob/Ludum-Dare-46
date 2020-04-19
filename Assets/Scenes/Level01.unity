@@ -208,24 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0250e9b830bbebf4b84cd37191315e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &9891585 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1323779626286122929, guid: 6e1269256ae886c4d9aafa73f43591e8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1939114286}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &9891590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9891585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3b86cfad0e28943a4b766a8f5999ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &13566897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28426,10 +28408,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 16071362, guid: 6e1269256ae886c4d9aafa73f43591e8, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1323779626286122926, guid: 6e1269256ae886c4d9aafa73f43591e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28490,8 +28468,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canary
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 16071362, guid: 6e1269256ae886c4d9aafa73f43591e8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e1269256ae886c4d9aafa73f43591e8, type: 3}
 --- !u!114 &1939114287 stripped
 MonoBehaviour:
@@ -28499,7 +28476,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1939114286}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9891585}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f72ac93d8b0c4284d971d0e4b254f385, type: 3}

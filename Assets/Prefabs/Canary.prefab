@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 16071360}
   - component: {fileID: 16071361}
-  - component: {fileID: 16071362}
   m_Layer: 0
   m_Name: CanaryWing
   m_TagString: Untagged
@@ -69,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 2295692291942042531, guid: 44437bba01c283441851b0d964b151a6,
     type: 3}
@@ -83,23 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &16071362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16071359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c3b86cfad0e28943a4b766a8f5999ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 498966890}
-  - {fileID: 1114822183}
-  - {fileID: 643191613}
-  - {fileID: 16071361}
 --- !u!1 &498966888
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +150,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 6778ecfe15a76474c9f6b3af1c401eaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -249,7 +231,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -3323029433693627671, guid: 44437bba01c283441851b0d964b151a6,
     type: 3}
@@ -390,7 +372,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -571829086303497050, guid: 44437bba01c283441851b0d964b151a6,
     type: 3}
@@ -417,6 +399,7 @@ GameObject:
   - component: {fileID: 1323779626286122924}
   - component: {fileID: 1323779626286122931}
   - component: {fileID: 1323779626286122930}
+  - component: {fileID: 9891590}
   m_Layer: 0
   m_Name: Canary
   m_TagString: Canary
@@ -522,3 +505,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.225, y: 0.42}
   m_EdgeRadius: 0
+--- !u!114 &9891590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323779626286122929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c3b86cfad0e28943a4b766a8f5999ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
