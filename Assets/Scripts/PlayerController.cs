@@ -3,8 +3,12 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : LivingBeing
 {
+    private const float MINE_ANIM_DURATION = 0.5f;
+
     [SerializeField]
-    Transform crosshair = null, hand = null;
+    GameObject crosshair = null;
+    [SerializeField]
+    Transform hand = null;
     [SerializeField]
     LayerMask minableLayers;
     [SerializeField]
@@ -19,20 +23,34 @@ public class PlayerController : LivingBeing
 
     float crosshairOffset;
     bool jumping;
+    private bool mining = false;
+    private float mineStartTime = 0.0f;
 
     private enum GroundStatus { Grounding, StartingJump, Jumping, Falling }
     private GroundStatus groundStatus;
     private Animator animator;
     public Transform modelGameObject;
+    private Color unminableCrosshairColor = new Color(255, 0, 0);
+    private Color minableCrosshairColor = new Color(0, 255, 0);
+
+    private Transform crosshairTransform;
+    private SpriteRenderer crosshairRenderer;
 
     private void Awake()
     {
         cam = Camera.main;
         body = GetComponent<Rigidbody2D>();
 
-        crosshairOffset = Vector2.Distance( transform.position, crosshair.position );
+        if (crosshair != null) {
+            crosshairTransform = crosshair.transform;
+            crosshairRenderer = crosshair.GetComponent<SpriteRenderer>();
+            crosshairOffset = Vector2.Distance( transform.position, crosshairTransform.position );
+        }
+
         animator = GetComponent<Animator>();
         modelGameObject = transform.Find("Model");
+
+        
     }
 
     // Update is called once per frame
@@ -45,12 +63,15 @@ public class PlayerController : LivingBeing
 
         Vector2 directionFromCharacterToMouse = (mousePositionInRealWorld - (Vector2)transform.position).normalized;
 
-        crosshair.position = transform.position + (Vector3)directionFromCharacterToMouse;
+        crosshairTransform.position = transform.position + (Vector3)directionFromCharacterToMouse;
         ///////////////////////////////////////
-        
-        if( Input.GetMouseButtonDown(0) )
+        Collider2D coll = Physics2D.OverlapPoint( crosshairTransform.position, minableLayers );
+        if (crosshairRenderer != null) {
+            crosshairRenderer.color = (coll != null) ? minableCrosshairColor : unminableCrosshairColor;
+        }
+
+        if( coll != null && Input.GetMouseButtonDown(0) )
         {
-            Collider2D coll = Physics2D.OverlapPoint( crosshair.position, minableLayers );
             if ( coll != null )
             {
                 Tile tile = coll.GetComponent<Tile>();
@@ -58,8 +79,15 @@ public class PlayerController : LivingBeing
                 {
                     tile.Hit( force );
                 }
-
+                if (!mining) {
+                    mining = true;
+                    animator.SetBool("mining", true);
+                    mineStartTime = Time.fixedTime;
+                }
             }
+        } else if (mining && (Time.fixedTime - mineStartTime > MINE_ANIM_DURATION)) {
+            mining = false;
+            animator.SetBool("mining", false);
         }
 
         ///////////////////////////////////////
