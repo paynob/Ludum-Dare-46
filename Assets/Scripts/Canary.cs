@@ -11,8 +11,11 @@ public class Canary : LivingBeing
 
     Dictionary<Collider2D, float> enemiesDangerRatio = new Dictionary<Collider2D, float>();
 
+    public Warning canaryWarning;
+
     private bool touchingPlayer;
     private PlayerController player;
+
 
     private void Awake()
     {
@@ -38,7 +41,14 @@ public class Canary : LivingBeing
 
             audioSource.volume = Mathf.Pow( totalDanger, 2 ) * 2f;
 
-            //TODO animator.SetFloat( "DangerRatio", totalDanger );
+            if (canaryWarning != null) {
+                Debug.Log(totalDanger);
+                canaryWarning.SetWarningLevel(totalDanger);
+            }
+
+            if (animator != null) {
+                animator.Play(totalDanger > 0f ? "Base Layer.Canary" : "Base Layer.CanaryIdle");
+            }
 
             if( Input.GetMouseButtonDown( 1 ) )
             {
