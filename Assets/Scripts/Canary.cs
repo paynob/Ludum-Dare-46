@@ -16,6 +16,7 @@ public class Canary : LivingBeing
     private bool touchingPlayer;
     private PlayerController player;
 
+    public GameObject pickMeUpSprite;
 
     private void Awake()
     {
@@ -54,9 +55,12 @@ public class Canary : LivingBeing
                 if( transform.parent == null && touchingPlayer )
                 {
                     player.Pick( body );
+                    pickMeUpSprite.SetActive(false);
                 } else
                 {
                     player.Release( body );
+                    pickMeUpSprite.transform.localScale = new Vector3(transform.localScale.x, 1.0f, 1.0f);
+                    pickMeUpSprite.SetActive(true);
                 }
             }
         } else if( isDead )
