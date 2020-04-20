@@ -42,7 +42,6 @@ public class Canary : LivingBeing
             audioSource.volume = Mathf.Pow( totalDanger, 2 ) * 2f;
 
             if (canaryWarning != null) {
-                Debug.Log(totalDanger);
                 canaryWarning.SetWarningLevel(totalDanger);
             }
 

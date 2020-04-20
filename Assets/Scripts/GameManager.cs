@@ -22,10 +22,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI timeText, diamondsText;
 
+    public GameObject gameOverPanel;
 
     private float remainingTime;
     private int currentDiamonds;
     private Image timeSliderFillArea;
+
 
     private void Start()
     {
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour
     {
         currentDiamonds++;
         diamondsText.text = currentDiamonds.ToString();
+    }
+
+    public void Die() {
+        gameOverPanel.GetComponent<Animator>().Play("Base Layer.GameOver");
     }
 }
 

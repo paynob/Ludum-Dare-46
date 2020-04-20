@@ -25,6 +25,12 @@ public class LivingBeing : MonoBehaviour
         {
             isDead = true;
             GetComponent<Animator>().SetTrigger( "Die" );
+            // It's too late to do this in an organized way
+            GameObject gameManagerGO = GameObject.FindWithTag("GameManager");
+           
+            if (gameManagerGO != null) {
+                gameManagerGO.GetComponent<GameManager>().Die();
+            }
         }
     }
 
