@@ -22,13 +22,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI timeText, diamondsText;
 
-    public GameObject gameOverPanel;
+    public GameObject gameOverPanel, youWonPanel;
 
     private float remainingTime;
     private int currentDiamonds;
     private Image timeSliderFillArea;
 
     public AudioSource dieAudioSource;
+
+    private bool gameEnded;
 
     private void Start()
     {
@@ -39,6 +41,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if( gameEnded )
+            return;
+
         remainingTime -= Time.deltaTime;
         if( remainingTime < 0 )
             remainingTime = 0;
@@ -55,15 +60,26 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void CollectDiamond()
+    public void CollectDiamond(int amount = 1)
     {
-        currentDiamonds++;
+        if( gameEnded )
+            return;
+        currentDiamonds+=amount;
         diamondsText.text = currentDiamonds.ToString();
+
+        if ( currentDiamonds >= targetDiamonds )
+        {
+            gameEnded = true;
+            youWonPanel.GetComponent<Animator>().Play( "Base Layer.GameOver" );
+        }
     }
 
     public void Die() {
+        if( gameEnded )
+            return;
         gameOverPanel.GetComponent<Animator>().Play("Base Layer.GameOver");
         dieAudioSource.PlayDelayed(0);
+        gameEnded = true;
     }
 }
 

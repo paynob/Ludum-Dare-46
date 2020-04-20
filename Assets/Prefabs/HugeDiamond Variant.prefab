@@ -25,17 +25,22 @@ PrefabInstance:
     - target: {fileID: 7655834423507712698, guid: e267de7287baaa94db6acb5f2bd08390,
         type: 3}
       propertyPath: m_Name
-      value: HugeDiamond
+      value: HugeDiamond Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655834423507712700, guid: e267de7287baaa94db6acb5f2bd08390,
+        type: 3}
+      propertyPath: value
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7655834423507712702, guid: e267de7287baaa94db6acb5f2bd08390,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6297419
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7655834423507712702, guid: e267de7287baaa94db6acb5f2bd08390,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0157819
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7655834423507712702, guid: e267de7287baaa94db6acb5f2bd08390,
         type: 3}
