@@ -31,6 +31,8 @@ public class LivingBeing : MonoBehaviour
             if (gameManagerGO != null) {
                 gameManagerGO.GetComponent<GameManager>().Die();
             }
+
+            GameObject.FindWithTag("Player").GetComponent<PlayerController>().enabled = false;
         }
     }
 

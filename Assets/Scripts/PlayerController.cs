@@ -19,6 +19,7 @@ public class PlayerController : LivingBeing
     float jumpForce;
     [SerializeField]
     AudioSource audioSource;
+    public AudioSource jumpAudioSource;
 
     Camera cam = null;
     Rigidbody2D body;
@@ -99,6 +100,7 @@ public class PlayerController : LivingBeing
         if (groundStatus == GroundStatus.Grounding && (Input.GetButtonDown("Jump") || Input.GetAxisRaw("Vertical") == 1))
         {
             groundStatus = GroundStatus.StartingJump;
+            jumpAudioSource.PlayDelayed(0);
         }
     }
 

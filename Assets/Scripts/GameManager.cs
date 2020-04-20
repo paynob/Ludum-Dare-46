@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private int currentDiamonds;
     private Image timeSliderFillArea;
 
+    public AudioSource dieAudioSource;
 
     private void Start()
     {
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void Die() {
         gameOverPanel.GetComponent<Animator>().Play("Base Layer.GameOver");
+        dieAudioSource.PlayDelayed(0);
     }
 }
 
