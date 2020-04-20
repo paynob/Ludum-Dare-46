@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 2295692291942042531, guid: 44437bba01c283441851b0d964b151a6,
     type: 3}
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 6778ecfe15a76474c9f6b3af1c401eaf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -312,7 +312,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: -3323029433693627671, guid: 44437bba01c283441851b0d964b151a6,
     type: 3}
@@ -453,7 +453,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -467753445
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -571829086303497050, guid: 44437bba01c283441851b0d964b151a6,
     type: 3}
@@ -5314,9 +5314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72ac93d8b0c4284d971d0e4b254f385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oxigenConsumptionPerSecond: 0.1
+  oxigenConsumptionPerSecond: 0.35
   oxigenRecoveryPerSecondOutsideMine: 0.5
-  recoveryLostPerMeterDepth: 0.001
+  recoveryLostPerMeterDepth: 0.01
   audioSource: {fileID: 8889839843344533977}
   canaryWarning: {fileID: 475111407}
   pickMeUpSprite: {fileID: 365962485}

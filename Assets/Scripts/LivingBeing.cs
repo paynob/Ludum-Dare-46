@@ -19,6 +19,9 @@ public class LivingBeing : MonoBehaviour
 
     public void TakeDamage( float amount )
     {
+        if( isDead )
+            return;
+
         oxigen = Mathf.Clamp01( oxigen - amount );
 
         if( oxigen == 0 )

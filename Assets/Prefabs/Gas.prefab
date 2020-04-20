@@ -4801,8 +4801,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDamage: 0.002
   maxDamage: 0.075
-  canaryDetectionRadius: 1.5
-  playerDetectionRadius: 0.5
+  canaryDetectionRadius: 1.75
+  playerDetectionRadius: 0.65
 --- !u!58 &6436542589767922267
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4818,4 +4818,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1.75
