@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         remainingTime = secondsToGetDiamonds;
         timeSlider.maxValue = secondsToGetDiamonds;
         timeSliderFillArea = timeSlider.fillRect.GetComponentInChildren<Image>();
